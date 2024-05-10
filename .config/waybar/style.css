@@ -1,0 +1,164 @@
+@import "mocha.css";
+@define-color spotify-green #66cc99;
+
+/* BAR STYLING */
+* {
+	font-size: 13px;
+	font-family: Hack Nerd Font, "Font Awesome 5 Free";
+	color: @text;
+}
+
+:hover {
+    border: 1px solid @lavender;
+	background: @base;
+}
+
+window#waybar {
+	background: @crust;
+	border: 1px solid @mantle;
+}
+
+/* MODULE STYLING */
+#backlight,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#custom-menu,
+#custom-pipewire,
+#custom-separator,
+#custom-shutdown,
+#custom-spotify,
+#custom-wireguard,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#workspaces {
+	padding: 1px 10px 0px 10px;
+	margin: 5px 0px 5px 0px;
+	border-radius: 5px;
+	background: @base;
+}
+
+/* far left module */
+#custom-menu {
+    margin-left: 5px;
+}
+
+/* module grouping */
+/* left modules */
+#battery,
+#cpu {
+	border-radius: 5px 0px 0px 5px;
+}
+/* middle modules */
+#bluetooth,
+#disk,
+#memory,
+#temperature.cpu-desktop {
+	border-radius: 0px 0px 0px 0px;
+}
+/* right modules */
+#backlight,
+#temperature.cpu-laptop,
+#temperature.gpu-desktop {
+	border-radius: 0px 5px 5px 0px;
+}
+
+/* far right module */
+#custom-shutdown {
+	margin-right: 5px;
+}
+
+/* module styling */
+#battery {
+	color: @green;
+}
+#battery.critical {
+	color: @red; 
+}
+#battery.warning {
+	color: @yellow; 
+}
+#bluetooth {
+	color: @blue;
+}
+#clock {
+	color: @mauve; 
+}
+#cpu {
+	color: @green; 
+}
+#custom-menu {
+	color: @blue;
+}
+#custom-pipewire {
+	color: @teal;
+}
+#custom-shutdown {
+	color: @maroon;
+}
+#custom-spotify {
+    color: @spotify-green;
+	min-width: 100px;
+}
+#custom-separator {
+	opacity: 0;
+	padding: 0px;
+}
+#disk {
+	color: @green;
+}
+#disk.critical {
+	color: @red;
+}
+#disk.warning {
+	color: @yellow;
+}
+#memory {
+	color: @green;
+}
+#memory.critical {
+	color: @red;
+}
+#memory.warning {
+	color: @yellow;
+}
+#mode {
+	color: @red;
+}
+#pulseaudio {
+	color: @teal;
+}
+#taskbar button {
+	padding: 5px 3px 1px 3px;
+}
+#taskbar button.active {
+	border: 1px solid @mauve;
+}
+#temperature {
+	color: @green;
+}
+#temperature.critical {
+	color: @red;
+}
+#workspaces {
+	padding: 0px;
+}
+#workspaces button {
+	margin: 0;
+	padding: 1px 5px 0px 5px;
+}
+#workspaces button.focused {
+	border: 1px solid @mauve;
+}
+#workspaces button.urgent {
+	background-color: @red;
+}

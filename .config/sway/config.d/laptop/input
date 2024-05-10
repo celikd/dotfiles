@@ -1,0 +1,16 @@
+input "type:mouse" {
+    pointer_accel 0
+}
+
+input "type:keyboard" { 
+        xkb_layout de
+        xkb_variant nodeadkeys
+        xkb_options grp:alt_shift_toggle
+}
+
+input "type:touchpad" {
+    dwt enabled
+    tap disabled
+    natural_scroll disabled
+    middle_emulation enabled
+}

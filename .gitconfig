@@ -1,0 +1,26 @@
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[pull]
+	rebase = false
+[core]
+	editor = code --wait
+[gpg]
+	format = ssh
+	# to use gpg instead of ssh, comment the above line
+[user]
+	name = FirstName LastName
+	# SSH
+	signingkey = /path/to/my/ssh_key.pub
+	# signingkey = /path/to/my/ssh_backup_key.pub
+	email = 123456+githubusername@users.noreply.github.com
+	# GPG (make sure command line pushes that expose my email are turned off on github)
+	# signingkey = 1111222233334444!
+	# email = name@mydomain.tld
+[commit]
+	gpgsign = true
