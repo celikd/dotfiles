@@ -15,7 +15,7 @@ set $right Right
 
 set $lock 'qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.KeePassXC.MainWindow.lockAllDatabases; swaylock -f'
 
-set $wallpaper_path $HOME/.config/wallpapers/vaporwavelab.jpg
+set $wallpaper_path $HOME/.config/wallpapers/alleyway.jpg
 set $screenshot_path $HOME/Screenshots
 
 ### KEY BINDINGS ###
