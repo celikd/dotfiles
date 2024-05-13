@@ -29,6 +29,7 @@ alias .....="cd ../../../.."
 alias mv='mv -i -v'
 alias rm='rm -i -v'
 alias cp='cp -i -v'
+alias fastfetch='fastfetch --logo-padding-top 2'
 
 gpg-encrypt () {
   keyid=0x0000000000000000
