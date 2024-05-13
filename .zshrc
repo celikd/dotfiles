@@ -8,10 +8,20 @@ fi
 export EDITOR=nano
 export SUDO_EDITOR=nano
 
-alias ls='ls --color=auto'
-alias la='ls -lah'
-alias ll='ls -lh'
-alias ldirs='ls -ldh .*/ */'
+#alias ls='ls --color=auto'
+#alias la='ls -lah'
+#alias ll='ls -lh'
+#alias ldirs='ls -ldh .*/ */'
+alias ls='lsd'
+alias la='lsd -lA'
+alias ll='lsd -l'
+alias cat='bat'
+alias du='dust'
+alias df='duf'
+alias find='fd'
+alias top='btm'
+#alias ping='gping'
+#alias ps='procs'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -63,3 +73,7 @@ plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
