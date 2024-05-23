@@ -1,17 +1,25 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# zsh key bindings
+[ -f .zshbindings ] && source .zshbindings
 
-export EDITOR=nano
-export SUDO_EDITOR=nano
+# starship.rs
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+eval "$(starship init zsh)"
 
+# quality of life aliases
 #alias ls='ls --color=auto'
 #alias la='ls -lah'
 #alias ll='ls -lh'
 #alias ldirs='ls -ldh .*/ */'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias mv='mv -i -v'
+alias rm='rm -i -v'
+alias cp='cp -i -v'
+alias history='history 1'
+
+# modern unix aliases
 alias ls='lsd'
 alias la='lsd -lA'
 alias ll='lsd -l'
@@ -22,17 +30,20 @@ alias find='fd'
 alias top='btm'
 #alias ping='gping'
 #alias ps='procs'
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias mv='mv -i -v'
-alias rm='rm -i -v'
-alias cp='cp -i -v'
+
+# custom aliases
 alias fastfetch='fastfetch --logo-padding-top 2'
 
+# environment variables
+export EDITOR=nano
+export SUDO_EDITOR=nano
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# custom functions
 gpg-encrypt () {
-  keyid=0x0000000000000000
+  keyid=0x14331F69AE5AB875
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} \
     -r $keyid "${1}" && echo "${1} -> ${output}"
@@ -50,31 +61,16 @@ switch-yubikeys () {
   gpg-connect-agent "scd serialno" "learn --force" /bye
 }
 
-# Lines configured by zsh-newuser-install
+# zsh stuff
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 unsetopt beep
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
-
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-
 plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
