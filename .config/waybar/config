@@ -13,7 +13,8 @@
 		"sway/mode"
 	],
 	"modules-center": [
-		"custom/spotify"
+		// "custom/spotify"
+		"custom/separator"
 	],
 	"modules-right": [
 		"pulseaudio",

@@ -4,7 +4,7 @@
 /* BAR STYLING */
 * {
 	font-size: 13px;
-	font-family: Hack Nerd Font, "Font Awesome 5 Free";
+	font-family: "Hack Nerd Font", "Font Awesome 5 Free";
 	color: @text;
 }
 
