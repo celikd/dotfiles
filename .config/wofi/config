@@ -1,6 +1,5 @@
 hide_scroll=false
 line_wrap=word
-term=kitty
 allow_images=true
 always_parse_args=true
 show_all=false
@@ -10,3 +9,5 @@ allow-images=true
 insensitive=true
 display_generic=true
 key_expand=Tab
+width=45%
+height=35%
