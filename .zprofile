@@ -1,9 +1,9 @@
-# Wayland environment variables
-export QT_QPA_PLATFORM=wayland
+# Wayland
+export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME=qt5ct
 export ELM_DISPLAY=wl
-export SDL_VIDEODRIVER=wayland
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=sway
+export SDL_VIDEODRIVER="wayland,x11"
+export CLUTTER_BACKEND=wayland
 # NVIDIA Only
 #export WLR_NO_HARDWARE_CURSORS=1
 #export GBM_BACKEND=nvidia-drm
@@ -26,7 +26,10 @@ export LIBVA_DRIVER_NAME=nouveau
 # SSH-Agent
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
+# Sway
+# export XDG_CURRENT_DESKTOP=sway
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec sway
   # exec sway --unsupported-gpu
+  # exec sway -d > ~/sway-debug.log
 fi
