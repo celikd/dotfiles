@@ -1,6 +1,6 @@
 # Wayland
 export QT_QPA_PLATFORM="wayland;xcb"
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORMTHEME=qt5ct
 export ELM_DISPLAY=wl
 export SDL_VIDEODRIVER="wayland,x11"
 export CLUTTER_BACKEND=wayland
