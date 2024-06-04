@@ -27,7 +27,7 @@ export LIBVA_DRIVER_NAME=nouveau
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Sway
-# export XDG_CURRENT_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec sway
   # exec sway --unsupported-gpu
