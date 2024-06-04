@@ -1,5 +1,6 @@
-input "type:mouse" {
-    pointer_accel 0
+input "type:pointer" {
+    accel_profile "flat"
+    pointer_accel -0.2
 }
 
 input "type:keyboard" { 

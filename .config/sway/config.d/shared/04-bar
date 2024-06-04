@@ -1,0 +1,5 @@
+bar {
+    id bar-main
+    position top
+    swaybar_command waybar
+}

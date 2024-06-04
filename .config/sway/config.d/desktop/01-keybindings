@@ -1,0 +1,2 @@
+# override
+bindsym --locked XF86Calculator exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle

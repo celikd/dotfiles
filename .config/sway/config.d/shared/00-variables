@@ -1,0 +1,15 @@
+set $mod Mod4
+set $term kitty
+set $app_launcher wofi --show=drun --color=$HOME/.config/wofi/catppuccin-mocha.colors --term=$term
+
+set $left Left
+set $down Down
+set $up Up
+set $right Right
+
+set $lock 'qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.KeePassXC.MainWindow.lockAllDatabases; swaylock -f'
+
+set $wallpaper_path $HOME/.config/wallpapers/alleyway.jpg
+set $screenshot_path $HOME/Screenshots
+
+set $scripts_path $HOME/.config/sway/scripts
