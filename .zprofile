@@ -4,6 +4,7 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export ELM_DISPLAY=wl
 export SDL_VIDEODRIVER="wayland,x11"
 export CLUTTER_BACKEND=wayland
+export MOZ_ENABLE_WAYLAND=1
 # NVIDIA Only
 #export WLR_NO_HARDWARE_CURSORS=1
 #export GBM_BACKEND=nvidia-drm
