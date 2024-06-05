@@ -24,15 +24,8 @@ export LIBVA_DRIVER_NAME=nouveau
 #export LIBVA_DRIVER_NAME=nvidia
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
-### SSH-Agent (Arch Linux)
-#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-### SSH-Agent (Void Linux)
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
+### SSH-Agent
+eval $(keychain --eval --quiet)
 
 ### Sway
 export XDG_CURRENT_DESKTOP=sway
