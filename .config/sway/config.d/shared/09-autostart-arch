@@ -1,0 +1,1 @@
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
