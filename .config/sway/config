@@ -2,3 +2,5 @@ include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/shared/*
 include $HOME/.config/sway/config.d/desktop/*
 # include $HOME/.config/sway/config.d/laptop/*
+include $HOME/.config/sway/outputs
+include $HOME/.config/sway/workspaces
