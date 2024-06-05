@@ -29,7 +29,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # Sway
 export XDG_CURRENT_DESKTOP=sway
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec sway
+  exec dbus-run-session sway
+  # exec sway
   # exec sway --unsupported-gpu
   # exec sway -d > ~/sway-debug.log
 fi
