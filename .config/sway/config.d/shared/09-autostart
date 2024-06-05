@@ -1,5 +1,3 @@
-exec --no-startup-id pipewire
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec_always --no-startup-id mako
-exec_always nm-applet --indicator
+exec_always --no-startup-id nm-applet --indicator
 exec_always --no-startup-id exec $scripts_path/autoname-workspaces.py
