@@ -43,7 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # custom functions
 gpg-encrypt () {
-  keyid=0x14331F69AE5AB875
+  keyid=0x0000000000000000
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} \
     -r $keyid "${1}" && echo "${1} -> ${output}"
