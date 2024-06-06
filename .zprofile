@@ -31,9 +31,9 @@ eval $(keychain --eval --quiet)
 export XDG_CURRENT_DESKTOP=sway
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     # Void Linux
-    exec dbus-run-session sway
+    # exec dbus-run-session sway
     # Arch Linux
-    #exec sway
+    exec sway
     #exec sway --unsupported-gpu
     #exec sway -d > ~/sway-debug.log
 fi
