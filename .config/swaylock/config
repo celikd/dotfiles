@@ -1,13 +1,13 @@
 grace=0
-image=$HOME/.config/wallpapers/pasteldreams.jpeg
+image=$HOME/.config/wallpapers/leafy.png
 clock
 datestr=%d-%m-%Y
 font=Hack Nerd Font
 indicator
 indicator-radius=100
 indicator-thickness=7
-indicator-x-position=960
-indicator-y-position=150
+indicator-x-position=900
+indicator-y-position=450
 
 text-color=#f5bde6
 ring-color=#8aadf4
