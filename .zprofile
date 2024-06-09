@@ -1,6 +1,6 @@
 ### Wayland environment variables
 export QT_QPA_PLATFORM="wayland;xcb"
-#export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 export ELM_DISPLAY=wl
 export SDL_VIDEODRIVER="wayland,x11"
 export CLUTTER_BACKEND=wayland
@@ -30,9 +30,6 @@ eval $(keychain --eval --quiet)
 ### Sway
 export XDG_CURRENT_DESKTOP=sway
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    # Void Linux
-    # exec dbus-run-session sway
-    # Arch Linux
     exec sway
     #exec sway --unsupported-gpu
     #exec sway -d > ~/sway-debug.log
