@@ -216,7 +216,7 @@
 		"spacing": 10,
 	},
     "clock": {
-        "format": " {:%H:%M:%S}",
+        "format": " {:%H:%M}",
         "format-alt": " {:%A, %B %d, %Y (%R)}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
