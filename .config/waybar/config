@@ -1,51 +1,117 @@
 // -*- mode: json -*-
-[
+// https://fontawesome.com/v4/cheatsheet/
+
 {
 	"layer": "bottom",
 	"position": "top",
 	"modules-left": [
 		"custom/menu",
-		"custom/separator",
 		"idle_inhibitor",
-		"custom/separator",
 		"sway/workspaces",
-		"custom/separator",
-		"sway/mode"
+		"sway/window",
+		"privacy",
+		"sway/mode",
 	],
-	"modules-center": [
-		// "custom/spotify"
-		"custom/separator"
+    "modules-center": [		
+		"custom/spotify",
 	],
-	"modules-right": [
-		"pulseaudio",
-		"custom/separator",
-		// "battery",
-		// "bluetooth",
-		// "backlight",
-		// "custom/separator",
-		"cpu",
-		"memory",
-		"disk",
-		"temperature#cpu-desktop",
-		// "temperature#cpu-laptop",
-		"temperature#gpu-desktop",
-		"custom/separator",
+    "modules-right": [
+		"custom/notification", "pulseaudio", "backlight", "battery", "bluetooth", "network",
+		"cpu", "memory", "temperature#cpu-desktop", "temperature#cpu-laptop", "temperature#gpu-desktop",
 		"tray",
-		"custom/separator",
-		"clock",
-		"custom/separator"
+		"custom/weather", "clock",
 	],
-    
-	"backlight": {
-		"interval": 5,
-		"format": "{icon}",
-		"format-alt": "{icon} {percent}%",
-		"format-alt-click": "click-right",
-		"format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
-		"on-scroll-down": "brightnessctl -c backlight set +5%",
-		"on-scroll-up": "brightnessctl -c backlight set 5%-"
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon} {}",
+		"format-icons": {
+			"notification": "<span foreground='red'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-none": "",
+			"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
 	},
-
+	"custom/menu": {
+        "format": "",
+        "on-click": "wofi --show drun",
+		"tooltip": false,
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": false,
+		"format": "{name}",
+	},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		]
+	},
+	"sway/mode": {
+		"format": " {}",
+		"max-length": 50,
+	},
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 50,
+		"rewrite": {
+			"(.*) Mozilla Firefox": "  $1",
+			"(.*) - Code - OSS": "  $1"
+		 }
+	},
+	"custom/spotify": {
+		"format": "{icon} {}",
+		"escape": true,
+		"return-type": "json",
+		"max-length":40,
+		// "interval": 30, // Remove this if your script is endless and write in loop
+		"on-click": "playerctl -p spotify play-pause",
+		"on-click-right": "killall spotify",
+		"smooth-scrolling-threshold": 2, // This value was tested using a trackpad, it should be lowered if using a mouse.
+		"on-scroll-up" : "playerctl -p spotify next",
+		"on-scroll-down" : "playerctl -p spotify previous",
+		"exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+		"exec-if": "pgrep spotify"
+	},
+	"network": {
+		"format-ethernet": "🔌 {ifname}",
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-linked": " no ip",
+		"format-disconnected": "",
+		"tooltip-format-ethernet": "{ipaddr}/{cidr} via {gwaddr} ({ifname})",
+		"tooltip-format-wifi": "{ipaddr}/{cidr} via {gwaddr} ({ifname})\n{signaldBm}dBm - {frequency}",
+		"tooltip-format-disconnected": "disconnected",
+		"max-length": 50,
+		"on-click": "nm-connection-editor",
+	},
 	"battery": {
 		"bat": "BAT0",
 		"interval": 60,
@@ -63,98 +129,11 @@
 			""
 		]
 	},
-
-	"bluetooth": {
-		"format": " {status}",
-		"format-connected": " {device_alias}",
-		"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
-	},
-
-	"clock": {
-		"format": "{:%H:%M:%S}",
-		"timezone": "Europe/Berlin",
-		"tooltip-format": "{:%a %d %b %H:%M}",
-		"tooltip": true,
-		"interval": 1
-	},
-
 	"cpu": {
 		"interval": 10,
 		"format": " {usage}%",
 		"max-length": 10
 	},
-
-	"custom/menu": {
-        "format": "",
-        "on-click": "wofi --show drun"
-    	},
-
-	"custom/pipewire": {
-		"exec": "pw-volume status",
-		"return-type": "json",
-		"interval": 1,
-		"signal": 8,
-		"format": "{icon} {percentage}%",
-		"format-icons": {
-			"mute": "",
-			"default": ["", "", ""]
-		}
-	},
-
-	"custom/separator": {
-		"format": "",
-		"tooltip": false
-	},	
-
-	"custom/shutdown": {
-		"format": "",
-		"on-click": "wlogout -p layer-shell -r 50"
-	},
-
-	"custom/spotify": {
-		"format": "{icon} {}",
-		"return-type": "json",
-		"max-length": 42,
-		"format-icons": {
-				"spotify": "",
-				"default": "🎜"
-		},
-		"escape": true,
-		"exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-	},
-
-	"custom/wireguard": {
-		"format": "{}<big> 嬨</big>",
-		"exec": "~/.config/waybar/scripts/wireguard.sh",
-		// "on-click": "rofi -modi 'WireGuard:~/.config/waybar/wireguard-rofi-waybar/wireguard-rofi.sh' -show WireGuard; pkill -SIGRTMIN+6 waybar",
-		"signal": 6,
-		"interval": 60,
-		"tooltip": false
-	},
-
-	"disk": {
-		"interval": 30,
-		"states": {
-			"warning": 75,
-			"critical": 90
-		},
-		"format": "# {free}",
-		"path": "/"
-	},
-
-	"idle_inhibitor": {
-		"format": "{icon}",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
-	},
-
 	"memory": {
 		"interval": 30,
 		"states": {
@@ -162,9 +141,47 @@
 		},
 		"format": " {used:0.1f}GB"
 	},
-	
+	"bluetooth": {
+		"format": " {status}",
+		"format-disabled": "",
+		"format-no-controller": "",
+		"format-connected": " {device_alias}",
+		"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+		"on-click": "blueman-manager",
+	},
+	"cpu": {
+		"interval": 10,
+		"format": " {usage}%",
+		"max-length": 10
+	},
+	"temperature#cpu-desktop": {
+		// "thermal-zone": 2,
+		"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+		"critical-threshold": 80,
+		"format-critical": " {temperatureC}°C",
+		"format": " {temperatureC}°C"
+	},
+	"temperature#cpu-laptop": {
+		"thermal-zone": 13,
+		"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+		"critical-threshold": 80,
+		"format-critical": " {temperatureC}°C",
+		"format": " {temperatureC}°C"
+	},
+	"temperature#gpu-desktop": {
+		// "thermal-zone": 2,
+		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+		"critical-threshold": 95,
+		"format-critical": " {temperatureC}°C",
+		"format": " {temperatureC}°C"
+	},
 	"pulseaudio": {
-		"format": "{icon} {volume}% {format_source}",
+		"format": "{icon}  {volume}% {format_source}",
 		"format-muted": " {format_source}",
 		"format-source": "",
     	"format-source-muted": "",
@@ -185,52 +202,49 @@
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
 	},
-
-	"sway/mode": {
-		"format": "{}"
+	"backlight": {
+		"interval": 5,
+		"format": "{icon}",
+		"format-alt": "{icon} {percent}%",
+		"format-alt-click": "click-right",
+		"format-icons": ["🌕", "🌔", "🌓", "🌒", "🌑"],
+		"on-scroll-down": "brightnessctl -c backlight set +5%",
+		"on-scroll-up": "brightnessctl -c backlight set 5%-"
 	},
-
-	"sway/workspaces": {
-		"disable-scroll": true,
- 		"all-outputs": false,
- 		"format": "{name}",
-		"format-icons": {
-			"urgent": "",
-			"focused": "",
-			"default": ""
-		}
+	"tray": {
+		"icon-size": 16,
+		"spacing": 10,
 	},
-
-	"temperature#cpu-desktop": {
-		// "thermal-zone": 2,
-		"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-		"critical-threshold": 80,
-		"format-critical": " {temperatureC}°C",
-		"format": " {temperatureC}°C"
-	},
-
-	"temperature#cpu-laptop": {
-		"thermal-zone": 13,
-		"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-		"critical-threshold": 80,
-		"format-critical": " {temperatureC}°C",
-		"format": " {temperatureC}°C"
-	},	
-
-	"temperature#gpu-desktop": {
-		// "thermal-zone": 2,
-		"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-		"critical-threshold": 95,
-		"format-critical": " {temperatureC}°C",
-		"format": " {temperatureC}°C"
-	},
-
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 14,
-        "icon-theme": "Papirus",
-        "tooltip-format": "{title}",
-        "on-click": "activate"
-    }
+    "clock": {
+        "format": " {:%H:%M:%S}",
+        "format-alt": " {:%A, %B %d, %Y (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+	"custom/weather": {
+		"exec": "${HOME}/.config/waybar/scripts/get_weather.sh Darmstadt+Germany",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"interval": 3600
+	}
 }
-]

@@ -1,164 +1,203 @@
-@import "mocha.css";
+@import "./rose-pine.css";
 @define-color spotify-green #66cc99;
 
-/* BAR STYLING */
 * {
-	font-size: 13px;
-	font-family: "Hack Nerd Font", "Font Awesome 5 Free";
-	color: @text;
+  font-size: 13px;
+  font-family: "Hack Nerd Font", "Font Awesome 5 Free";
+  color: @text;
 }
 
 :hover {
-    border: 1px solid @lavender;
-	background: @base;
+  border: 1px solid @highlightMed;
 }
 
 window#waybar {
-	background: @crust;
-	border: 1px solid @mantle;
+  background: @surface;
 }
 
-/* MODULE STYLING */
-#backlight,
-#battery,
-#bluetooth,
-#clock,
-#cpu,
 #custom-menu,
-#custom-pipewire,
-#custom-separator,
-#custom-shutdown,
-#custom-spotify,
-#custom-wireguard,
-#disk,
 #idle_inhibitor,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#taskbar,
-#temperature,
-#tray,
+#workspaces,
 #window,
-#workspaces {
-	padding: 1px 10px 0px 10px;
-	margin: 5px 0px 5px 0px;
-	border-radius: 5px;
-	background: @base;
-}
-
-/* far left module */
-#custom-menu {
-    margin-left: 5px;
-}
-
-/* module grouping */
-/* left modules */
-#battery,
-#cpu {
-	border-radius: 5px 0px 0px 5px;
-}
-/* middle modules */
-#bluetooth,
-#disk,
-#memory,
-#temperature.cpu-desktop {
-	border-radius: 0px 0px 0px 0px;
-}
-/* right modules */
+#privacy-item,
+#mode,
+#custom-spotify,
+#custom-notification,
+#pulseaudio,
 #backlight,
-#temperature.cpu-laptop,
-#temperature.gpu-desktop {
-	border-radius: 0px 5px 5px 0px;
+#battery,
+#network,
+#bluetooth,
+#cpu,
+#memory,
+#temperature,
+#clock,
+#custom-weather,
+#tray {
+  background: @base;
+  margin: .2em 0 .2em 0;
+  padding: .1em .4em .1em .4em;
+  border-radius: .85em;
+  border: 1px solid @highlightMed;
 }
 
-/* far right module */
-#custom-shutdown {
-	margin-right: 5px;
-}
-
-/* module styling */
-#battery {
-	color: @green;
-}
-#battery.critical {
-	color: @red; 
-}
-#battery.warning {
-	color: @yellow; 
-}
-#bluetooth {
-	color: @blue;
-}
-#clock {
-	color: @mauve; 
-}
-#cpu {
-	color: @green; 
-}
 #custom-menu {
-	color: @blue;
+  margin-left: .5em;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  padding-right: 1em;
+
+  color: @foam;
 }
-#custom-pipewire {
-	color: @teal;
+
+#idle_inhibitor {
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  padding-right: 1em;
+
+  color: @foam;
 }
-#custom-shutdown {
-	color: @maroon;
-}
-#custom-spotify {
-    color: @spotify-green;
-	min-width: 100px;
-}
-#custom-separator {
-	opacity: 0;
-	padding: 0px;
-}
-#disk {
-	color: @green;
-}
-#disk.critical {
-	color: @red;
-}
-#disk.warning {
-	color: @yellow;
-}
-#memory {
-	color: @green;
-}
-#memory.critical {
-	color: @red;
-}
-#memory.warning {
-	color: @yellow;
-}
-#mode {
-	color: @red;
-}
-#pulseaudio {
-	color: @teal;
-}
-#taskbar button {
-	padding: 5px 3px 1px 3px;
-}
-#taskbar button.active {
-	border: 1px solid @mauve;
-}
-#temperature {
-	color: @green;
-}
-#temperature.critical {
-	color: @red;
-}
+
 #workspaces {
-	padding: 0px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 #workspaces button {
-	margin: 0;
-	padding: 1px 5px 0px 5px;
+	border-radius: 1em;
 }
 #workspaces button.focused {
-	border: 1px solid @mauve;
+	border: 1px solid @highlightHigh;
+  background-color: @overlay;
 }
 #workspaces button.urgent {
-	background-color: @red;
+	background-color: @love;
+}
+
+window#waybar.empty #window {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  background-color: transparent;
+}
+
+#privacy-item,
+#mode {
+  background-color: @love;
+  color: @base;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+#custom-spotify {
+  color: @spotify-green;
+}
+
+/* "custom/notification", "pulseaudio", "backlight", "battery", "bluetooth", "network", */
+#custom-notification {
+  color: @foam;
+  margin-left: 1em;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+#pulseaudio {
+  color: @foam;
+  padding-right: 12px;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#backlight {
+  color: @foam;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#battery {
+  color: @foam;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#bluetooth {
+  color: @foam;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#network {
+  color: @foam;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#cpu {
+  color: @rose;
+  margin-left: 1em;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+#memory {
+  color: @rose;
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#temperature.cpu-desktop {
+  margin-left: 1em;
+  border-right: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+#temperature.gpu-desktop {
+  border-left: 1px solid @highlightMed;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+#temperature.cpu-laptop {
+  margin-left: 1em;
+}
+
+#temperature {
+	color: @spotify-green;
+}
+#temperature.critical {
+	color: @love;
+}
+
+#custom-weather {
+  color: @iris;
+  margin-left: 1em;
+}
+
+#clock {
+  color: @iris;  
+  margin-left: 1em;
+}
+
+#tray {
+  margin-left: 1em;
+  margin-right: .5em;
 }
