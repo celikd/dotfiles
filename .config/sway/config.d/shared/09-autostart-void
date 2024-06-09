@@ -1,3 +1,0 @@
-exec --no-startup-id pipewire
-exec --no-startup-id /usr/libexec/polkit-kde-authentication-agent-1
-exec --no-startup-id /usr/bin/syncthing serve --no-browser --logfile=default

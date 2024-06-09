@@ -9,7 +9,7 @@ set $right Right
 
 set $lock 'qdbus org.keepassxc.KeePassXC.MainWindow /keepassxc org.keepassxc.KeePassXC.MainWindow.lockAllDatabases; swaylock -f'
 
-set $wallpaper_path $HOME/.config/wallpapers/alleyway.jpg
+set $wallpaper_path $HOME/.config/wallpapers/leafy.png
 set $screenshot_path $HOME/Screenshots
 
 set $scripts_path $HOME/.config/sway/scripts
