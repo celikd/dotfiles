@@ -9,4 +9,5 @@ set list
 set mouse=a
 set title
 set termguicolors
-colorscheme catppuccin_mocha
+set background=dark
+colorscheme rosepine
