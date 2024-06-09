@@ -10,4 +10,3 @@ set mouse=a
 set title
 set termguicolors
 set background=dark
-colorscheme rosepine
