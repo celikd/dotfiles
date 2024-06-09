@@ -35,15 +35,17 @@ alias top='btm'
 alias fastfetch='fastfetch --logo-padding-top 2'
 
 # environment variables
-export EDITOR=nano
-export SUDO_EDITOR=nano
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+
+# development
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # custom functions
 gpg-encrypt () {
-  keyid=0x0000000000000000
+  keyid=0x14331F69AE5AB875
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} \
     -r $keyid "${1}" && echo "${1} -> ${output}"
