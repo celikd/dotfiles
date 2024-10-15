@@ -20,9 +20,9 @@ alias cp='cp -i -v'
 alias history='history 1'
 
 # modern unix aliases
-alias ls='lsd'
-alias la='lsd -lA'
-alias ll='lsd -l'
+alias ls='lsd --group-directories-first'
+alias la='lsd -lA --group-directories-first'
+alias ll='lsd -l --group-directories-first'
 alias cat='bat'
 alias du='dust'
 alias df='duf'
