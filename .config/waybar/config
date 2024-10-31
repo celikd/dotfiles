@@ -17,7 +17,7 @@
 	],
     "modules-right": [
 		"custom/notification", "pulseaudio", "backlight", "battery", "bluetooth", "network",
-		"cpu", "memory", "temperature#cpu-desktop", "temperature#cpu-laptop", "temperature#gpu-desktop",
+		"cpu", "memory", "temperature#cpu-desktop", "temperature#gpu-desktop",
 		"tray",
 		"custom/weather", "clock",
 	],
@@ -88,7 +88,7 @@
 		 }
 	},
 	"custom/spotify": {
-		"format": "{icon} {}",
+		"format": "{} {icon}",
 		"escape": true,
 		"return-type": "json",
 		"max-length":40,
@@ -161,7 +161,7 @@
 	},
 	"temperature#cpu-desktop": {
 		// "thermal-zone": 2,
-		"hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
 		"critical-threshold": 80,
 		"format-critical": " {temperatureC}°C",
 		"format": " {temperatureC}°C"
