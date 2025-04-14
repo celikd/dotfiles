@@ -35,8 +35,8 @@ alias top='btm'
 alias fastfetch='fastfetch --logo-padding-top 2'
 
 # environment variables
-export EDITOR=nvim
-export SUDO_EDITOR=nvim
+export EDITOR=nano
+export SUDO_EDITOR=nano
 
 # development
 export NVM_DIR="$HOME/.nvm"
